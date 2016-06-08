@@ -34,7 +34,7 @@ public class GhostTrailRenderer : MonoBehaviour {
 		obj.AddComponent<MeshFilter>().mesh = _myMesh;
 		obj.AddComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
 		obj.transform.position = transform.position;
-		obj.AddComponent<GhostTrail>().Init(LifeTime, FadeSpeed, transform.localScale);
+		obj.AddComponent<GhostTrail>().Init(LifeTime, FadeSpeed, transform.localScale, transform.rotation);
 		_lastGhost = Time.time;
 		_lastPos = transform.position;
 
