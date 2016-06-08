@@ -10,10 +10,11 @@ public class GhostTrail : MonoBehaviour {
 	private Renderer _renderer;
 	private Color _myColor;
 
-	public void Init(float lifetime, float fadespeed){
+	public void Init(float lifetime, float fadespeed, Vector3 scale){
 
 		_renderer = GetComponent<Renderer>();
 		_renderer.material.shader = Shader.Find("Transparent/Diffuse");
+		transform.localScale = scale;
 		
 		_lifeTime = lifetime;
 		_fadeSpeed = fadespeed;
