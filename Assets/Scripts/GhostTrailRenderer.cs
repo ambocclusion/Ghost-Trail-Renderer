@@ -7,6 +7,7 @@ public class GhostTrailRenderer : MonoBehaviour {
 	public float DistanceThreshold = .15f;
 	public float LifeTime = .5f;
 	public float FadeSpeed = 2.0f;
+	public float ScaleSpeed = 1.0f;
 
 	private Mesh _myMesh;
 	private float _lastGhost = 0.0f;
@@ -34,7 +35,7 @@ public class GhostTrailRenderer : MonoBehaviour {
 		obj.AddComponent<MeshFilter>().mesh = _myMesh;
 		obj.AddComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
 		obj.transform.position = transform.position;
-		obj.AddComponent<GhostTrail>().Init(LifeTime, FadeSpeed, transform.localScale, transform.rotation);
+		obj.AddComponent<GhostTrail>().Init(LifeTime, FadeSpeed, transform.localScale, transform.rotation, ScaleSpeed);
 		_lastGhost = Time.time;
 		_lastPos = transform.position;
 

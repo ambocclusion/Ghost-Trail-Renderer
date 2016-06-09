@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GhostTrail : MonoBehaviour {
@@ -6,11 +6,12 @@ public class GhostTrail : MonoBehaviour {
 	private float _lifeTime = .1f;
 	private float _startTime = 0.0f;
 	private float _fadeSpeed = .1f;
+	private float _scaleSpeed = .1f;
 
 	private Renderer _renderer;
 	private Color _myColor;
 
-	public void Init(float lifetime, float fadespeed, Vector3 scale, Quaternion rotation){
+	public void Init(float lifetime, float fadespeed, Vector3 scale, Quaternion rotation, float scalespeed){
 
 		_renderer = GetComponent<Renderer>();
 		_renderer.material.shader = Shader.Find("Transparent/Diffuse");
@@ -20,6 +21,7 @@ public class GhostTrail : MonoBehaviour {
 		_lifeTime = lifetime;
 		_fadeSpeed = fadespeed;
 		_startTime = Time.time;
+		_scaleSpeed = scalespeed;
 
 	}
 
@@ -37,6 +39,8 @@ public class GhostTrail : MonoBehaviour {
 		_myColor.a = Mathf.MoveTowards(_myColor.a, 0, _fadeSpeed * Time.deltaTime);
 
 		_renderer.material.color = _myColor;
+
+		transform.localScale = new Vector3(Mathf.MoveTowards(transform.localScale.x, 0, _scaleSpeed * Time.deltaTime), Mathf.MoveTowards(transform.localScale.y, 0, _scaleSpeed * Time.deltaTime), Mathf.MoveTowards(transform.localScale.z, 0, _scaleSpeed * Time.deltaTime));
 
 	}
 }
